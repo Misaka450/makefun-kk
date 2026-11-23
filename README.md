@@ -6,8 +6,21 @@ final deadline 2026-11-25 08:00 CST.
 
 ## What it is
 
-A 1024×1024 infographic: a dark-navy header naming the day
-**MONDAY 23 NOVEMBER 2026**, then six panels, one per story:
+A 1024×1024 infographic (v4, bright colourful infographic — the
+newspaper front-page look of v1–v3 was rejected by the user):
+a bright violet header band with big white WORLD NEWS and a
+yellow date chip naming the day **MONDAY 23 NOVEMBER 2026**,
+a lead story on COP31 as the biggest teal block with the
+model-generated serious hero illustration (cracked teal/green
+globe, plain gold sun with straight rays and NO face, coral
+mountains, turquoise sea, no text, no faces anywhere), then five
+colourful blocks in a 2 + 3 grid — orange, green, red, purple,
+blue — each with a big white number, a flat icon in a white
+circle and a big headline. The planet and scales icons are
+model-generated in bright colours (no text); the pin, chart
+and building icons are clean code-drawn ones in the card
+colour on white. Plus a yellow-bar data visual for the
+market falls:
 
 1. **CLIMATE — Antalya, Turkey:** COP31 ends without a deal — EU and
    about 130 parties reject a text omitting fossil fuels.
@@ -31,9 +44,15 @@ else was invented.
 - `main.py` — the entrypoint (Python 3.13, stdlib only). Copies
   `entry.png` to `$MAKEFUN_OUTPUT_DIR/entry.png`, default `/output`,
   byte for byte, after checking the PNG signature.
-- `entry.png` — the image itself, 1024×1024, ~115 KB (limit 1 MiB).
-- `build_image.py` — the generator that drew `entry.png` with Pillow
-  (build-time only; the grader never runs it).
+- `entry.png` — the image itself, 1024×1024, 199,840 bytes (limit 1 MiB),
+  SHA-256 `ffdb6dc4cc182c0e114168251d64b54c2f15c388d53149950b9d7d045663aa6b`.
+- `build_image.py` — the generator that composited `entry.png` with Pillow
+  (build-time only; the grader never runs it). It pastes in the
+  model-generated serious hero (`assets/media-generation-cop31-hero-serious-*.png`,
+  cover-cropped to the lead box) and the two model-generated bright icons
+  (`assets/media-generation-v4-icon-planet-*.webp`,
+  `assets/media-generation-v4-icon-scales-*.webp`); those asset
+  files are build inputs only and are not needed by `main.py`.
 - `LICENSE` — MIT.
 - `.makefun/owner.json` — claim file naming the payout wallet
   `937mXGg2kV6EcrtpB8uTdJTwYLwrv9c6Q6gZTWdLyQ4D`.
